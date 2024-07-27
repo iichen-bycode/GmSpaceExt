@@ -1,0 +1,20 @@
+{
+    "logs": [
+        {
+            "outputFile": "com.gmspace.sdk.app-mergeDebugResources-2:/values-hdpi-v4/values-hdpi-v4.xml",
+            "map": [
+                {
+                    "source": "E:\\Gradle\\caches\\transforms-3\\faa5a12e3c0a46fcf71ae1631ab39321\\transformed\\appcompat-1.7.0\\res\\values-hdpi-v4\\values-hdpi-v4.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endLines": "6",
+                        "endColumns": "13",
+                        "endOffsets": "327"
+                    }
+                }
+            ]
+        }
+    ]
+}
