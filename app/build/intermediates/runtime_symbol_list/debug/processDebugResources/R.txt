@@ -3690,6 +3690,7 @@ int layout ime_secondary_split_test_activity 0x7f0b0036
 int layout layout_activity_install 0x7f0b007d
 int layout layout_activity_launch 0x7f0b007e
 int layout layout_activity_plugin 0x7f0b0038
+int layout layout_activity_uninstall 0x7f0b007f
 int layout m3_alert_dialog 0x7f0b0039
 int layout m3_alert_dialog_actions 0x7f0b003a
 int layout m3_alert_dialog_title 0x7f0b003b

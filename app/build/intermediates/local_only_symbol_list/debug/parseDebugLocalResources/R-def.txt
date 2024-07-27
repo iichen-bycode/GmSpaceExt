@@ -12,6 +12,7 @@ drawable ic_launcher_foreground
 layout layout_activity_install
 layout layout_activity_launch
 layout layout_activity_plugin
+layout layout_activity_uninstall
 mipmap ic_launcher
 mipmap ic_launcher_round
 string app_name

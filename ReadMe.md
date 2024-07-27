@@ -162,9 +162,30 @@
 
 ```
 
-### 2. 卸载应用
+### 3. 卸载应用
 ```agsl
-
+        if(item.isExt32()) {
+            Intent intent = new Intent();
+            intent.putExtra("mPackageName", item.getPackageName());
+            intent.setComponent(new ComponentName("com.gmspace.sdk", "com.gmspace.ext.PluginLaunchActivity"));
+//            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(intent);
+        } else {
+            startActivity(LaunchAppActivity.getIntent(item));
+        }
 
 ```
+
+### 4. sp 32位应用
+```agsl
+    String sp = MMKV.defaultMMKV().getString("32BitApp","");
+    List<AppItemEnhance> appItemEnhanceList = new Gson().fromJson(sp,new TypeToken<List<AppItemEnhance>>() {}.getType());
+    if(appItemEnhanceList == null) {
+        appItemEnhanceList = new ArrayList<>();
+    }
+    appItemEnhanceList.add(appItem);
+    MMKV.defaultMMKV().putString("32BitApp",GsonUtils.toJson(appItemEnhanceList));
+```
+
+
 

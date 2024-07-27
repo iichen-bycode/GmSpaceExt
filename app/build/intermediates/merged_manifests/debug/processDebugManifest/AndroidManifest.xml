@@ -241,6 +241,15 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+        <activity
+            android:name="com.gmspace.ext.PluginUnInstallActivity"
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="com.gmspace.ext.UNINSTALL" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
 
         <provider
             android:name="androidx.core.content.FileProvider"

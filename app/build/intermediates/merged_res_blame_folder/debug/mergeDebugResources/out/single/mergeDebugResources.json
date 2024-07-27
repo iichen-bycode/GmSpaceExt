@@ -16,6 +16,10 @@
         "source": "E:\\Gradle\\daemon\\8.4\\com.gmspace.sdk.app-main-6:\\mipmap-mdpi\\ic_launcher_round.webp"
     },
     {
+        "merged": "E:\\Gradle\\daemon\\8.4\\com.gmspace.sdk.app-debug-4:\\layout_layout_activity_install.xml.flat",
+        "source": "E:\\Gradle\\daemon\\8.4\\com.gmspace.sdk.app-main-6:\\layout\\layout_activity_install.xml"
+    },
+    {
         "merged": "E:\\Gradle\\daemon\\8.4\\com.gmspace.sdk.app-debug-4:\\xml_backup_rules.xml.flat",
         "source": "E:\\Gradle\\daemon\\8.4\\com.gmspace.sdk.app-main-6:\\xml\\backup_rules.xml"
     },
@@ -48,20 +52,20 @@
         "source": "E:\\Gradle\\daemon\\8.4\\com.gmspace.sdk.app-main-6:\\xml\\file_paths.xml"
     },
     {
+        "merged": "com.gmspace.sdk.app-debug-4:/layout_layout_activity_uninstall.xml.flat",
+        "source": "com.gmspace.sdk.app-main-6:/layout/layout_activity_uninstall.xml"
+    },
+    {
         "merged": "E:\\Gradle\\daemon\\8.4\\com.gmspace.sdk.app-debug-4:\\mipmap-hdpi_ic_launcher_round.webp.flat",
         "source": "E:\\Gradle\\daemon\\8.4\\com.gmspace.sdk.app-main-6:\\mipmap-hdpi\\ic_launcher_round.webp"
     },
     {
-        "merged": "com.gmspace.sdk.app-debug-4:/layout_layout_activity_install.xml.flat",
-        "source": "com.gmspace.sdk.app-main-6:/layout/layout_activity_install.xml"
+        "merged": "E:\\Gradle\\daemon\\8.4\\com.gmspace.sdk.app-debug-4:\\layout_layout_activity_launch.xml.flat",
+        "source": "E:\\Gradle\\daemon\\8.4\\com.gmspace.sdk.app-main-6:\\layout\\layout_activity_launch.xml"
     },
     {
         "merged": "E:\\Gradle\\daemon\\8.4\\com.gmspace.sdk.app-debug-4:\\mipmap-xxxhdpi_ic_launcher.webp.flat",
         "source": "E:\\Gradle\\daemon\\8.4\\com.gmspace.sdk.app-main-6:\\mipmap-xxxhdpi\\ic_launcher.webp"
-    },
-    {
-        "merged": "com.gmspace.sdk.app-debug-4:/layout_layout_activity_launch.xml.flat",
-        "source": "com.gmspace.sdk.app-main-6:/layout/layout_activity_launch.xml"
     },
     {
         "merged": "E:\\Gradle\\daemon\\8.4\\com.gmspace.sdk.app-debug-4:\\mipmap-anydpi-v26_ic_launcher.xml.flat",

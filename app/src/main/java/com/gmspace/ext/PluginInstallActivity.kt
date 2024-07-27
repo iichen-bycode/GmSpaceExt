@@ -39,7 +39,7 @@ class PluginInstallActivity : AppCompatActivity() {
                 packageName = result.data.getString("package_name")?:""
                 Log.d(
                     "iichen",
-                    ">>>>>>>>>>>>PluginLaunchActivity ${result.isSucceed} ${result.message} $packageName"
+                    ">>>>>>>>>>>>PluginInstall ${result.isSucceed} ${result.message} $packageName"
                 )
                 val packageInfo: PackageInfo = VLite.get().getPackageInfo(packageName, 0)
                 runOnUiThread {
