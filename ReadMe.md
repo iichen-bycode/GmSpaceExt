@@ -186,6 +186,3 @@
     appItemEnhanceList.add(appItem);
     MMKV.defaultMMKV().putString("32BitApp",GsonUtils.toJson(appItemEnhanceList));
 ```
-
-
-

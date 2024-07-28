@@ -7,7 +7,7 @@ import com.gmspace.sdk.R
 import com.vlite.sdk.VLite
 
 
-class PluginUnInstallActivity : AppCompatActivity(){
+class PluginUnInstallActivity : BaseActivity(){
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -18,9 +18,11 @@ class PluginUnInstallActivity : AppCompatActivity(){
                 finish()
                 return
             }
-            val result = VLite.get().uninstallPackage(this)
-            Log.d("iichen",">>>>>>>>>>>>>>>>>>卸载结果 $result")
-            finish()
+            executor.submit {
+                val result = VLite.get().uninstallPackage(this)
+                Log.d("iichen",">>>>>>>>>>>>>>>>>>卸载结果 $result")
+                finish()
+            }
         }
     }
 }
