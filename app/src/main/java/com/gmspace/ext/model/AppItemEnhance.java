@@ -9,6 +9,53 @@ import androidx.annotation.NonNull;
 
 public class AppItemEnhance implements Parcelable {
     boolean isExt32 = false;
+    boolean isOverride = false;
+
+    protected AppItemEnhance(Parcel in) {
+        isExt32 = in.readByte() != 0;
+        isOverride = in.readByte() != 0;
+        appName = in.readString();
+        packageName = in.readString();
+        versionCode = in.readLong();
+        versionName = in.readString();
+        iconUri = in.readString();
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeByte((byte) (isExt32 ? 1 : 0));
+        dest.writeByte((byte) (isOverride ? 1 : 0));
+        dest.writeString(appName);
+        dest.writeString(packageName);
+        dest.writeLong(versionCode);
+        dest.writeString(versionName);
+        dest.writeString(iconUri);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    public static final Creator<AppItemEnhance> CREATOR = new Creator<AppItemEnhance>() {
+        @Override
+        public AppItemEnhance createFromParcel(Parcel in) {
+            return new AppItemEnhance(in);
+        }
+
+        @Override
+        public AppItemEnhance[] newArray(int size) {
+            return new AppItemEnhance[size];
+        }
+    };
+
+    public boolean isOverride() {
+        return isOverride;
+    }
+
+    public void setOverride(boolean override) {
+        isOverride = override;
+    }
 
     public AppItemEnhance() {
     }
@@ -66,50 +113,4 @@ public class AppItemEnhance implements Parcelable {
     public void setVersionName(String versionName) {
         this.versionName = versionName;
     }
-
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(@NonNull Parcel dest, int flags) {
-        dest.writeByte((byte) (isExt32 ? 1 : 0));
-        dest.writeString(appName);
-        dest.writeString(packageName);
-        dest.writeLong(versionCode);
-        dest.writeString(versionName);
-        dest.writeString(iconUri);
-    }
-
-
-    public void readFromParcel(Parcel source) {
-        this.appName = source.readString();
-        this.packageName = source.readString();
-        this.versionCode = source.readLong();
-        this.versionName = source.readString();
-        this.iconUri = source.readString();
-        this.isExt32 = source.readByte() == 1;
-    }
-
-    protected AppItemEnhance(Parcel in) {
-        isExt32 = in.readByte() != 0;
-        appName = in.readString();
-        packageName = in.readString();
-        versionCode = in.readLong();
-        versionName = in.readString();
-        iconUri = in.readString();
-    }
-
-    public static final Creator<AppItemEnhance> CREATOR = new Creator<AppItemEnhance>() {
-        @Override
-        public AppItemEnhance createFromParcel(Parcel in) {
-            return new AppItemEnhance(in);
-        }
-
-        @Override
-        public AppItemEnhance[] newArray(int size) {
-            return new AppItemEnhance[size];
-        }
-    };
 }

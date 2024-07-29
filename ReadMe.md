@@ -186,3 +186,19 @@
     appItemEnhanceList.add(appItem);
     MMKV.defaultMMKV().putString("32BitApp",GsonUtils.toJson(appItemEnhanceList));
 ```
+
+
+###
+```md
+    需要设置32为插件支持包名：
+        GmSpaceObject.set32BitExtConfig(GmSpace32BitExtConfig gmSpace32BitExtConfig)
+
+    安装：
+        使用：GmSpaceObject.installPackage(String path, GmSpaceInstallConfig gmSpaceInstallConfig) 
+            # 需要自己在onActivityResult处理32位成功回调 和 位数等异常判断
+                GmSpaceObject.INSTALL_APP_REQUESTCODE
+                GmSpaceObject.INSTALL_APP_RESULTCODE
+
+        使用：GmSpaceObject.installPackage(Activity activity,String path, GmSpaceInstallConfig gmSpaceInstallConfig) 
+            # 封装位数和异常判断 32位会自动跳转到配置的32位插件包
+```

@@ -1,90 +1,90 @@
 [
     {
-        "merged": "E:\\Gradle\\daemon\\8.4\\com.gmspace.sdk.app-debug-4:\\mipmap-xhdpi_ic_launcher.webp.flat",
-        "source": "E:\\Gradle\\daemon\\8.4\\com.gmspace.sdk.app-main-6:\\mipmap-xhdpi\\ic_launcher.webp"
+        "merged": "com.gmspace.sdk.app-debug-34:/xml_backup_rules.xml.flat",
+        "source": "com.gmspace.sdk.app-main-36:/xml/backup_rules.xml"
     },
     {
-        "merged": "E:\\Gradle\\daemon\\8.4\\com.gmspace.sdk.app-debug-4:\\xml_data_extraction_rules.xml.flat",
-        "source": "E:\\Gradle\\daemon\\8.4\\com.gmspace.sdk.app-main-6:\\xml\\data_extraction_rules.xml"
+        "merged": "com.gmspace.sdk.app-debug-34:/layout_layout_activity_launch.xml.flat",
+        "source": "com.gmspace.sdk.app-main-36:/layout/layout_activity_launch.xml"
     },
     {
-        "merged": "E:\\Gradle\\daemon\\8.4\\com.gmspace.sdk.app-debug-4:\\mipmap-xxhdpi_ic_launcher_round.webp.flat",
-        "source": "E:\\Gradle\\daemon\\8.4\\com.gmspace.sdk.app-main-6:\\mipmap-xxhdpi\\ic_launcher_round.webp"
+        "merged": "com.gmspace.sdk.app-debug-34:/drawable-anydpi-v24_ic_launcher_foreground.xml.flat",
+        "source": "com.gmspace.sdk.app-pngs-30:/drawable-anydpi-v24/ic_launcher_foreground.xml"
     },
     {
-        "merged": "E:\\Gradle\\daemon\\8.4\\com.gmspace.sdk.app-debug-4:\\mipmap-mdpi_ic_launcher_round.webp.flat",
-        "source": "E:\\Gradle\\daemon\\8.4\\com.gmspace.sdk.app-main-6:\\mipmap-mdpi\\ic_launcher_round.webp"
+        "merged": "com.gmspace.sdk.app-debug-34:/layout_layout_activity_uninstall.xml.flat",
+        "source": "com.gmspace.sdk.app-main-36:/layout/layout_activity_uninstall.xml"
     },
     {
-        "merged": "E:\\Gradle\\daemon\\8.4\\com.gmspace.sdk.app-debug-4:\\layout_layout_activity_install.xml.flat",
-        "source": "E:\\Gradle\\daemon\\8.4\\com.gmspace.sdk.app-main-6:\\layout\\layout_activity_install.xml"
+        "merged": "com.gmspace.sdk.app-debug-34:/mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "com.gmspace.sdk.app-main-36:/mipmap-anydpi-v26/ic_launcher.xml"
     },
     {
-        "merged": "E:\\Gradle\\daemon\\8.4\\com.gmspace.sdk.app-debug-4:\\xml_backup_rules.xml.flat",
-        "source": "E:\\Gradle\\daemon\\8.4\\com.gmspace.sdk.app-main-6:\\xml\\backup_rules.xml"
+        "merged": "com.gmspace.sdk.app-debug-34:/mipmap-hdpi_ic_launcher.webp.flat",
+        "source": "com.gmspace.sdk.app-main-36:/mipmap-hdpi/ic_launcher.webp"
     },
     {
-        "merged": "E:\\Gradle\\daemon\\8.4\\com.gmspace.sdk.app-debug-4:\\mipmap-hdpi_ic_launcher.webp.flat",
-        "source": "E:\\Gradle\\daemon\\8.4\\com.gmspace.sdk.app-main-6:\\mipmap-hdpi\\ic_launcher.webp"
+        "merged": "com.gmspace.sdk.app-debug-34:/mipmap-xxxhdpi_ic_launcher_round.webp.flat",
+        "source": "com.gmspace.sdk.app-main-36:/mipmap-xxxhdpi/ic_launcher_round.webp"
     },
     {
-        "merged": "E:\\Gradle\\daemon\\8.4\\com.gmspace.sdk.app-debug-4:\\mipmap-mdpi_ic_launcher.webp.flat",
-        "source": "E:\\Gradle\\daemon\\8.4\\com.gmspace.sdk.app-main-6:\\mipmap-mdpi\\ic_launcher.webp"
+        "merged": "com.gmspace.sdk.app-debug-34:/xml_file_paths.xml.flat",
+        "source": "com.gmspace.sdk.app-main-36:/xml/file_paths.xml"
     },
     {
-        "merged": "E:\\Gradle\\daemon\\8.4\\com.gmspace.sdk.app-debug-4:\\layout_layout_activity_plugin.xml.flat",
-        "source": "E:\\Gradle\\daemon\\8.4\\com.gmspace.sdk.app-main-6:\\layout\\layout_activity_plugin.xml"
+        "merged": "com.gmspace.sdk.app-debug-34:/mipmap-xxxhdpi_ic_launcher.webp.flat",
+        "source": "com.gmspace.sdk.app-main-36:/mipmap-xxxhdpi/ic_launcher.webp"
     },
     {
-        "merged": "E:\\Gradle\\daemon\\8.4\\com.gmspace.sdk.app-debug-4:\\mipmap-xxxhdpi_ic_launcher_round.webp.flat",
-        "source": "E:\\Gradle\\daemon\\8.4\\com.gmspace.sdk.app-main-6:\\mipmap-xxxhdpi\\ic_launcher_round.webp"
+        "merged": "com.gmspace.sdk.app-debug-34:/mipmap-xhdpi_ic_launcher_round.webp.flat",
+        "source": "com.gmspace.sdk.app-main-36:/mipmap-xhdpi/ic_launcher_round.webp"
     },
     {
-        "merged": "E:\\Gradle\\daemon\\8.4\\com.gmspace.sdk.app-debug-4:\\drawable-anydpi-v24_ic_launcher_foreground.xml.flat",
-        "source": "E:\\Gradle\\daemon\\8.4\\com.gmspace.sdk.app-pngs-0:\\drawable-anydpi-v24\\ic_launcher_foreground.xml"
+        "merged": "com.gmspace.sdk.app-debug-34:/mipmap-xhdpi_ic_launcher.webp.flat",
+        "source": "com.gmspace.sdk.app-main-36:/mipmap-xhdpi/ic_launcher.webp"
     },
     {
-        "merged": "E:\\Gradle\\daemon\\8.4\\com.gmspace.sdk.app-debug-4:\\mipmap-anydpi-v26_ic_launcher_round.xml.flat",
-        "source": "E:\\Gradle\\daemon\\8.4\\com.gmspace.sdk.app-main-6:\\mipmap-anydpi-v26\\ic_launcher_round.xml"
+        "merged": "com.gmspace.sdk.app-debug-34:/mipmap-mdpi_ic_launcher.webp.flat",
+        "source": "com.gmspace.sdk.app-main-36:/mipmap-mdpi/ic_launcher.webp"
     },
     {
-        "merged": "E:\\Gradle\\daemon\\8.4\\com.gmspace.sdk.app-debug-4:\\xml_file_paths.xml.flat",
-        "source": "E:\\Gradle\\daemon\\8.4\\com.gmspace.sdk.app-main-6:\\xml\\file_paths.xml"
+        "merged": "com.gmspace.sdk.app-debug-34:/mipmap-xxhdpi_ic_launcher_round.webp.flat",
+        "source": "com.gmspace.sdk.app-main-36:/mipmap-xxhdpi/ic_launcher_round.webp"
     },
     {
-        "merged": "com.gmspace.sdk.app-debug-4:/layout_layout_activity_uninstall.xml.flat",
-        "source": "com.gmspace.sdk.app-main-6:/layout/layout_activity_uninstall.xml"
+        "merged": "com.gmspace.sdk.app-debug-34:/mipmap-mdpi_ic_launcher_round.webp.flat",
+        "source": "com.gmspace.sdk.app-main-36:/mipmap-mdpi/ic_launcher_round.webp"
     },
     {
-        "merged": "E:\\Gradle\\daemon\\8.4\\com.gmspace.sdk.app-debug-4:\\mipmap-hdpi_ic_launcher_round.webp.flat",
-        "source": "E:\\Gradle\\daemon\\8.4\\com.gmspace.sdk.app-main-6:\\mipmap-hdpi\\ic_launcher_round.webp"
+        "merged": "com.gmspace.sdk.app-debug-34:/layout_layout_activity_install.xml.flat",
+        "source": "com.gmspace.sdk.app-main-36:/layout/layout_activity_install.xml"
     },
     {
-        "merged": "E:\\Gradle\\daemon\\8.4\\com.gmspace.sdk.app-debug-4:\\layout_layout_activity_launch.xml.flat",
-        "source": "E:\\Gradle\\daemon\\8.4\\com.gmspace.sdk.app-main-6:\\layout\\layout_activity_launch.xml"
+        "merged": "com.gmspace.sdk.app-debug-34:/drawable_ic_launcher_background.xml.flat",
+        "source": "com.gmspace.sdk.app-main-36:/drawable/ic_launcher_background.xml"
     },
     {
-        "merged": "E:\\Gradle\\daemon\\8.4\\com.gmspace.sdk.app-debug-4:\\mipmap-xxxhdpi_ic_launcher.webp.flat",
-        "source": "E:\\Gradle\\daemon\\8.4\\com.gmspace.sdk.app-main-6:\\mipmap-xxxhdpi\\ic_launcher.webp"
+        "merged": "com.gmspace.sdk.app-debug-34:/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "com.gmspace.sdk.app-main-36:/mipmap-anydpi-v26/ic_launcher_round.xml"
     },
     {
-        "merged": "E:\\Gradle\\daemon\\8.4\\com.gmspace.sdk.app-debug-4:\\mipmap-anydpi-v26_ic_launcher.xml.flat",
-        "source": "E:\\Gradle\\daemon\\8.4\\com.gmspace.sdk.app-main-6:\\mipmap-anydpi-v26\\ic_launcher.xml"
+        "merged": "com.gmspace.sdk.app-debug-34:/mipmap-hdpi_ic_launcher_round.webp.flat",
+        "source": "com.gmspace.sdk.app-main-36:/mipmap-hdpi/ic_launcher_round.webp"
     },
     {
-        "merged": "E:\\Gradle\\daemon\\8.4\\com.gmspace.sdk.app-debug-4:\\layout_layout_activity_lauch.xml.flat",
-        "source": "E:\\Gradle\\daemon\\8.4\\com.gmspace.sdk.app-main-6:\\layout\\layout_activity_lauch.xml"
+        "merged": "com.gmspace.sdk.app-debug-34:/mipmap-xxhdpi_ic_launcher.webp.flat",
+        "source": "com.gmspace.sdk.app-main-36:/mipmap-xxhdpi/ic_launcher.webp"
     },
     {
-        "merged": "E:\\Gradle\\daemon\\8.4\\com.gmspace.sdk.app-debug-4:\\drawable_ic_launcher_background.xml.flat",
-        "source": "E:\\Gradle\\daemon\\8.4\\com.gmspace.sdk.app-main-6:\\drawable\\ic_launcher_background.xml"
+        "merged": "com.gmspace.sdk.app-debug-34:/layout_layout_activity_plugin.xml.flat",
+        "source": "com.gmspace.sdk.app-main-36:/layout/layout_activity_plugin.xml"
     },
     {
-        "merged": "E:\\Gradle\\daemon\\8.4\\com.gmspace.sdk.app-debug-4:\\mipmap-xhdpi_ic_launcher_round.webp.flat",
-        "source": "E:\\Gradle\\daemon\\8.4\\com.gmspace.sdk.app-main-6:\\mipmap-xhdpi\\ic_launcher_round.webp"
+        "merged": "com.gmspace.sdk.app-debug-34:/xml_network_security_config.xml.flat",
+        "source": "com.gmspace.sdk.app-main-36:/xml/network_security_config.xml"
     },
     {
-        "merged": "E:\\Gradle\\daemon\\8.4\\com.gmspace.sdk.app-debug-4:\\mipmap-xxhdpi_ic_launcher.webp.flat",
-        "source": "E:\\Gradle\\daemon\\8.4\\com.gmspace.sdk.app-main-6:\\mipmap-xxhdpi\\ic_launcher.webp"
+        "merged": "com.gmspace.sdk.app-debug-34:/xml_data_extraction_rules.xml.flat",
+        "source": "com.gmspace.sdk.app-main-36:/xml/data_extraction_rules.xml"
     }
 ]

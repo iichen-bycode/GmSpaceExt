@@ -2,6 +2,8 @@ package com.gmspace.ext
 
 import android.app.Application
 import android.content.Context
+import android.util.Log
+import com.gmspace.sdk.GmSpaceObject
 import com.vlite.sdk.BuildConfig
 import com.vlite.sdk.LiteConfig
 import com.vlite.sdk.VLite
@@ -29,7 +31,8 @@ class App : Application() {
 
     override fun onCreate() {
         super.onCreate()
-        // 初始化SDK
-        VLite.initialize(this)
+        GmSpaceObject.initialize(
+            this, "fIyzKzyNNBEw1Hnn", "3ppgrZzdkRhunw"
+        ) { b, i, s -> Log.d("iichen", "初始化有没有成功$b") }
     }
 }
