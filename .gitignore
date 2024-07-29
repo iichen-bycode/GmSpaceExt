@@ -14,7 +14,7 @@
 .cxx
 local.properties
 .idea/
-stub/build
+app/build/
 *.wakatime-project
 ./run
 
