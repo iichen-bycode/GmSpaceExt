@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.FileProvider
 import com.gmspace.ext.utils.ExtUtils
 import com.gmspace.ext.utils.ExtUtils.getAppItem
+import com.gmspace.sdk.GmSpaceObject
 import com.gmspace.sdk.R
 import com.vlite.sdk.VLite
 import com.vlite.sdk.context.HostContext
@@ -25,43 +26,6 @@ class PluginInstallActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.layout_activity_install)
 
-        intent.getStringExtra("mPath")?.apply {
-            if (this.isBlank()) {
-                finish()
-                return
-            }
-
-            var packageName: String = ""
-            executor.submit {
-                val result = ExtUtils.installApplication(
-                    this@PluginInstallActivity,
-                    this
-                )
-                packageName = result.data.getString("package_name") ?: ""
-                Log.d(
-                    "iichen",
-                    ">>>>>>>>>>>>PluginInstall ${result.isSucceed} ${result.message} $packageName"
-                )
-                val packageInfo: PackageInfo = VLite.get().getPackageInfo(packageName, 0)
-                runOnUiThread {
-                    val appItem = getAppItem(packageInfo)
-                    val uri: Uri = FileProvider.getUriForFile(
-                        HostContext.getContext(),
-                        "gmspace.plugin.provider",  // 对应 FileProvider 配置中的 authorities
-                        File(appItem.iconUri) // 文件的实际路径
-                    )
-                    appItem.iconUri = uri.toString()
-                    setResult(0x0002,
-                        Intent().apply {
-                            data = uri
-                            putExtra("mAppItem", GsonUtils.toJson(appItem))
-                            addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
-                            addFlags(Intent.FLAG_GRANT_PERSISTABLE_URI_PERMISSION)
-                        }
-                    )
-                    finish()
-                }
-            }
-        }
+        GmSpaceObject.call32BitAppInstallResult(this,executor)
     }
 }
