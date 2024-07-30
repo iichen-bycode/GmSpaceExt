@@ -2989,6 +2989,7 @@ drawable icon_video
 drawable icon_video_back
 drawable icon_video_close
 drawable icon_video_play
+drawable img_app_placeholder
 drawable indeterminate_static
 drawable m3_avd_hide_password
 drawable m3_avd_show_password
@@ -3228,6 +3229,7 @@ id confirm_button
 id container
 id content
 id contentPanel
+id content_ll
 id contiguous
 id coordinator
 id cos
@@ -3244,6 +3246,7 @@ id default_activity_button
 id delete
 id deltaRelative
 id description
+id description_ll
 id design_bottom_sheet
 id design_menu_item_action_area
 id design_menu_item_action_area_stub
@@ -3352,6 +3355,8 @@ id item_record_video_filetime
 id item_record_video_switch
 id item_record_video_thumbnail
 id item_touch_helper_previous_elevation
+id iv_app_icon
+id iv_app_name
 id iv_logo
 id iv_type_clickable
 id iv_type_icon
@@ -3499,6 +3504,7 @@ id point_item
 id position
 id postLayout
 id pressed
+id progress
 id progress_bar
 id progress_circular
 id progress_horizontal
@@ -4402,6 +4408,7 @@ style Platform_V21_AppCompat_Light
 style Platform_V25_AppCompat
 style Platform_V25_AppCompat_Light
 style Platform_Widget_AppCompat_Spinner
+style RoundedImage
 style RtlOverlay_DialogWindowTitle_AppCompat
 style RtlOverlay_Widget_AppCompat_ActionBar_TitleItem
 style RtlOverlay_Widget_AppCompat_DialogTitle_Icon

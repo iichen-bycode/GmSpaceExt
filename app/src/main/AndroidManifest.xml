@@ -21,7 +21,8 @@
 
         <activity
             android:name="com.gmspace.ext.PluginActivity"
-            android:enabled="true"
+            android:enabled="false"
+            android:theme="@style/Theme.Transparent"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -35,6 +36,7 @@
         <activity
             android:name="com.gmspace.ext.PluginInstallActivity"
             android:excludeFromRecents="true"
+            android:theme="@style/Theme.Transparent"
             android:exported="true">
             <intent-filter>
                 <action android:name="com.gmspace.ext.INSTALL" />
@@ -45,6 +47,7 @@
         <activity
             android:name="com.gmspace.ext.PluginLaunchActivity"
             android:excludeFromRecents="true"
+            android:theme="@style/Theme.Transparent"
             android:exported="true">
             <intent-filter>
                 <action android:name="com.gmspace.ext.LAUNCH" />
@@ -55,6 +58,7 @@
         <activity
             android:name="com.gmspace.ext.PluginUnInstallActivity"
             android:excludeFromRecents="true"
+            android:theme="@style/Theme.Transparent"
             android:exported="true">
             <intent-filter>
                 <action android:name="com.gmspace.ext.UNINSTALL" />

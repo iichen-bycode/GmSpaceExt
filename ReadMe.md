@@ -1,204 +1,133 @@
-### 1. 安装失败或者判断是否32位后执行
-```agsl
-    // 启动安装应用
-    private void test(String absolutePath) {
-        if(isAppInstalled("com.gmspace.sdk")) {
-            Intent intent = new Intent();
-            intent.putExtra("mPath", absolutePath);
-            intent.setComponent(new ComponentName("com.gmspace.sdk", "com.gmspace.ext.PluginInstallActivity"));
-//            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-            startActivityForResult(intent, 0x0001);
-        } else {
-            Toast.makeText(this,"请先安装32位插件",Toast.LENGTH_SHORT).show();
-        }
-    }
+### 1. 安装应用
+```java
+  new DialogAsyncTask<String, String, GmSpaceResultParcel>(this) {
+            @Override
+            protected void onPreExecute() {
+                super.showProgressDialog("正在安装");
+            }
 
-    public boolean isAppInstalled(String packageName) {
-        PackageManager pm = getPackageManager();
-        try {
-            pm.getPackageInfo(packageName, PackageManager.GET_ACTIVITIES);
-            return true;
-        } catch (PackageManager.NameNotFoundException e) {
-            return false;
-        }
-    }
-    
-    
-      @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == 0x0001 && resultCode == 0x0002 && data != null) {
-            String json = data.getStringExtra("mAppItem");
-            AppItemEnhance mAppItem = GsonUtils.toObject(json,AppItemEnhance.class);
-            if (mAppItem != null) {
-                final Fragment fragment = getSupportFragmentManager().findFragmentById(binding.contentFragment.getId());
-                if (fragment instanceof LauncherFragment) {
-                    ((LauncherFragment) fragment).notify32AppInstall(mAppItem);
-                }
+            @Override
+            protected void onProgressUpdate(String... values) {
+                super.updateProgressDialog(values[0]);
+            }
+
+            @Override
+            protected GmSpaceResultParcel doInBackground(String... uris) {
+                String uri = uris[0];
+                // 无需额外判断 调用会处理当前宿主是否支持的游戏
+                // activity接受32位回调  统一在下面的回调内处理 
+                GmSpaceObject.installCompatiblePackage(activity,uri,null);
+                return resultParcel;
+            }
+            @Override
+            protected void onPostExecute(GmSpaceResultParcel result) {
+                super.onPostExecute(result);
+//                if(result.getCode() == GmSpaceResultParcel.CODE_32BIT_PACKAGE_INSTALLing) {
+//                    setSubtitle("正在使用32位游戏插件进行安装！");
+//                } else if(result.getCode() == GmSpaceResultParcel.CODE_32BIT_PACKAGE_UNINSTALL) {
+//                    setSubtitle("请先安装32位游戏插件！");
+//                    // 下载32位应用安装后重试
+//                } else if (result.isSucceed()) {
+//                    setSubtitle("应用安装成功 " + (result.getData() == null ? "" : result.getData().getString(GmSpaceEvent.KEY_PACKAGE_NAME)));
+//                } else {
+//                    setSubtitle("应用安装失败 " + result.getMessage());
+//                }
+            }
+        }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, src.getAbsolutePath());
+```
+> 安装回调（在统一回调内处理）
+```md
+    // 当前宿主支持的游戏可以直接通过    GmSpaceResultParcel resultParcel的isSucceed判断 32位不支持
+    GmSpaceObject.registerGmSpaceCompatibleEventListener(new OnGmSpaceReceivedEventListener() {
+        @Override
+        public void onReceivedEvent(int type, Bundle extras) {
+            if (GmSpaceEvent.TYPE_PACKAGE_INSTALLED == type) {
+                // 有应用安装 返回安装的应用信息 （KEY_PACKAGE_COMPATIBLE_STATUS 可以获取安装是否成功）
+                AppItemEnhance appItemEnhance = extras.getParcelable(GmSpaceEvent.KEY_PACKAGE_COMPATIBLE_INFO);
+                // appItemEnhance.isOverride() 是否重复安装
+                // appItemEnhance.isExt32() 是否32位
+
+                // GmSpaceEvent.KEY_PACKAGE_COMPATIBLE_INSTALL_RESULT 获取返回结果GmSpaceResultParcel 具体原因等
+            } else if (GmSpaceEvent.TYPE_PACKAGE_UNINSTALLED == type) {
+                // 有应用卸载 （KEY_PACKAGE_COMPATIBLE_STATUS 可以获取卸载是否成功）
+                final String packageName = extras.getString(GmSpaceEvent.KEY_PACKAGE_NAME);
+            }else if (GmSpaceEvent.TYPE_COMPONENT_SETTING_CHANGE == type){
+                // 组件状态变化 返回应用信息
+                AppItemEnhance appItemEnhance = extras.getParcelable(GmSpaceEvent.KEY_PACKAGE_COMPATIBLE_INFO);
             }
         }
-    }
-    
-    
-    public class AppItemEnhance implements Parcelable {
-    boolean isExt32 = false;
-
-    public AppItemEnhance() {
-    }
-
-    public boolean isExt32() {
-        return isExt32;
-    }
-
-    public void setExt32(boolean ext32) {
-        isExt32 = ext32;
-    }
-
-    private String appName;
-    private String packageName;
-    private long versionCode;
-    private String versionName;
-    private String iconUri;
-
-    public String getAppName() {
-        return appName;
-    }
-
-    public void setAppName(String appName) {
-        this.appName = appName;
-    }
-
-    public String getPackageName() {
-        return packageName;
-    }
-
-    public void setPackageName(String packageName) {
-        this.packageName = packageName;
-    }
-
-    public String getIconUri() {
-        return iconUri;
-    }
-
-    public void setIconUri(String iconUri) {
-        this.iconUri = iconUri;
-    }
-
-    public long getVersionCode() {
-        return versionCode;
-    }
-
-    public void setVersionCode(long versionCode) {
-        this.versionCode = versionCode;
-    }
-
-    public String getVersionName() {
-        return versionName;
-    }
-
-    public void setVersionName(String versionName) {
-        this.versionName = versionName;
-    }
-
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(@NonNull Parcel dest, int flags) {
-        dest.writeByte((byte) (isExt32 ? 1 : 0));
-        dest.writeString(appName);
-        dest.writeString(packageName);
-        dest.writeLong(versionCode);
-        dest.writeString(versionName);
-        dest.writeString(iconUri);
-    }
-
-
-    public void readFromParcel(Parcel source) {
-        this.appName = source.readString();
-        this.packageName = source.readString();
-        this.versionCode = source.readLong();
-        this.versionName = source.readString();
-        this.iconUri = source.readString();
-        this.isExt32 = source.readByte() == 1;
-    }
-
-    protected AppItemEnhance(Parcel in) {
-        isExt32 = in.readByte() != 0;
-        appName = in.readString();
-        packageName = in.readString();
-        versionCode = in.readLong();
-        versionName = in.readString();
-        iconUri = in.readString();
-    }
-
-    public static final Creator<AppItemEnhance> CREATOR = new Creator<AppItemEnhance>() {
-        @Override
-        public AppItemEnhance createFromParcel(Parcel in) {
-            return new AppItemEnhance(in);
-        }
-
-        @Override
-        public AppItemEnhance[] newArray(int size) {
-            return new AppItemEnhance[size];
-        }
-    };
-}
+    });
 ```
 
-### 2. 启动应用
-```agsl
-        if(item.isExt32()) {
-            Intent intent = new Intent();
-            intent.putExtra("mPackageName", item.getPackageName());
-            intent.setComponent(new ComponentName("com.gmspace.sdk", "com.gmspace.ext.PluginLaunchActivity"));
-//            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-            startActivity(intent);
-        } else {
-            startActivity(LaunchAppActivity.getIntent(item));
-        }
-
-```
-
-### 3. 卸载应用
-```agsl
-        if(item.isExt32()) {
-            Intent intent = new Intent();
-            intent.putExtra("mPackageName", item.getPackageName());
-            intent.setComponent(new ComponentName("com.gmspace.sdk", "com.gmspace.ext.PluginLaunchActivity"));
-//            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-            startActivity(intent);
-        } else {
-            startActivity(LaunchAppActivity.getIntent(item));
-        }
-
-```
-
-### 4. sp 32位应用
-```agsl
-    String sp = MMKV.defaultMMKV().getString("32BitApp","");
-    List<AppItemEnhance> appItemEnhanceList = new Gson().fromJson(sp,new TypeToken<List<AppItemEnhance>>() {}.getType());
-    if(appItemEnhanceList == null) {
-        appItemEnhanceList = new ArrayList<>();
-    }
-    appItemEnhanceList.add(appItem);
-    MMKV.defaultMMKV().putString("32BitApp",GsonUtils.toJson(appItemEnhanceList));
-```
-
-
-###
+### 2. 应用卸载
 ```md
-    需要设置32为插件支持包名：
-        GmSpaceObject.set32BitExtConfig(GmSpace32BitExtConfig gmSpace32BitExtConfig)
+        new DialogAsyncTask<Void, Void, Boolean>(context) {
+            @Override
+            protected void onPreExecute() {
+                super.showProgressDialog("正在卸载");
+            }
 
-    安装：
-        使用：GmSpaceObject.installPackage(String path, GmSpaceInstallConfig gmSpaceInstallConfig) 
-            # 需要自己在onActivityResult处理32位成功回调 和 位数等异常判断
-                GmSpaceObject.INSTALL_APP_REQUESTCODE
-                GmSpaceObject.INSTALL_APP_RESULTCODE
+            @Override
+            protected Boolean doInBackground(Void... voids) {
+                // activity接受32位回调  统一在上诉回调内处理 通过status判断是否成功
+                GmSpaceObject.uninstallCompatiblePackage(activity,appItemEnhance);
+                return false;
+            }
 
-        使用：GmSpaceObject.installPackage(Activity activity,String path, GmSpaceInstallConfig gmSpaceInstallConfig) 
-            # 封装位数和异常判断 32位会自动跳转到配置的32位插件包
+            @Override
+            protected void onPostExecute(Boolean result) {
+                super.onPostExecute(result);
+            }
+        }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+```
+
+### 3. 应用启动
+```md
+        new AsyncTask<Void, Drawable, Void>() {
+            @Override
+            protected void onProgressUpdate(Drawable... values) {
+                // 有windowBackground
+//                final Drawable windowBackground = (Drawable) values[0];
+//                applyWindowBackground(windowBackground);
+            }
+
+            @Override
+            protected void onPreExecute() {
+                GlideUtils.loadFadeSkipCache(binding.ivAppIcon, item.getIconUri());
+                binding.tvAppName.setText(item.getAppName());
+                binding.tvAppPackageName.setText(item.getPackageName());
+                binding.tvAppVersion.setText(String.format("%s（%s）", item.getVersionName(), item.getVersionCode()));
+            }
+
+            @Override
+            protected Void doInBackground(Void... voids) {
+//                final Drawable drawable = GmSpaceUtils.getLaunchActivityWindowBackground(item.getPackageName());
+//                publishProgress(drawable);
+
+                // 启动app
+                GmSpaceObject.startCompatibleApplication(item);
+                return null;
+            }
+
+            @Override
+            protected void onPostExecute(Void result) {
+                finish();
+            }
+        }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+```
+
+### 4. 获取已安装的应用列表 包含32位和64位  按lastUpdateTime排序 
+```kotlin
+    GmSpaceObject.getInstalledCompatiblePackages()
+```
+
+### 5. 具体的安装、卸载、启动页面布局自定义 在对应的Activity实现即可
+```md 
+    // 设置32位插件信息
+    GmSpaceObject.set32BitExtConfig(new GmSpace32BitExtConfig(
+        "com.gmspace.sdk", // 包名
+        "com.gmspace.ext.PluginInstallActivity", 
+        "com.gmspace.ext.PluginLaunchActivity",
+        "com.gmspace.ext.PluginUnInstallActivity"
+    ))
 ```

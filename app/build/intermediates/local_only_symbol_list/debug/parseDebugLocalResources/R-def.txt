@@ -9,6 +9,12 @@ color teal_700
 color white
 drawable ic_launcher_background
 drawable ic_launcher_foreground
+drawable img_app_placeholder
+id content_ll
+id description_ll
+id iv_app_icon
+id iv_app_name
+id progress
 layout layout_activity_install
 layout layout_activity_launch
 layout layout_activity_plugin
@@ -16,6 +22,7 @@ layout layout_activity_uninstall
 mipmap ic_launcher
 mipmap ic_launcher_round
 string app_name
+style RoundedImage
 style Theme.GmSpaceExt
 style Theme.Transparent
 xml backup_rules
