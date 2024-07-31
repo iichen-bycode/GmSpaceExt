@@ -62,37 +62,13 @@
 
 ### 3. 应用启动
 ```md
-        new AsyncTask<Void, Drawable, Void>() {
-            @Override
-            protected void onProgressUpdate(Drawable... values) {
-                // 有windowBackground
-//                final Drawable windowBackground = (Drawable) values[0];
-//                applyWindowBackground(windowBackground);
-            }
-
-            @Override
-            protected void onPreExecute() {
-                GlideUtils.loadFadeSkipCache(binding.ivAppIcon, item.getIconUri());
-                binding.tvAppName.setText(item.getAppName());
-                binding.tvAppPackageName.setText(item.getPackageName());
-                binding.tvAppVersion.setText(String.format("%s（%s）", item.getVersionName(), item.getVersionCode()));
-            }
-
-            @Override
-            protected Void doInBackground(Void... voids) {
-//                final Drawable drawable = GmSpaceUtils.getLaunchActivityWindowBackground(item.getPackageName());
-//                publishProgress(drawable);
-
-                // 启动app
-                GmSpaceObject.startCompatibleApplication(item);
-                return null;
-            }
-
-            @Override
-            protected void onPostExecute(Void result) {
-                finish();
-            }
-        }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+    private void asyncLaunchApp(AppItemEnhance item) {
+        GlideUtils.loadFadeSkipCache(binding.ivAppIcon, item.getIconUri());
+        binding.tvAppName.setText(item.getAppName());
+        binding.tvAppPackageName.setText(item.getPackageName());
+        binding.tvAppVersion.setText(String.format("%s（%s）", item.getVersionName(), item.getVersionCode()));
+        GmSpaceObject.startCompatibleApplication(item);
+    }
 ```
 
 ### 4. 获取已安装的应用列表 包含32位和64位  按lastUpdateTime排序
