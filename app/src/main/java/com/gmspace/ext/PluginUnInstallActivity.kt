@@ -14,6 +14,6 @@ class PluginUnInstallActivity : BaseActivity(){
         super.onCreate(savedInstanceState)
         setContentView(R.layout.layout_activity_uninstall)
 
-        GmSpaceObject.call32BitAppUnInstallResult(this,executor)
+        GmSpaceObject.call32BitAppUnInstallResult(this)
     }
 }

@@ -1,39 +1,20 @@
 ### 1. 安装应用
-```java
-  new DialogAsyncTask<String, String, GmSpaceResultParcel>(this) {
-            @Override
-            protected void onPreExecute() {
-                super.showProgressDialog("正在安装");
-            }
+```md
+        if(mProgressDialog == null) {
+            final View view = LayoutInflater.from(this).inflate(R.layout.dialog_material_loading, null);
+            TextView mMessageView = view.findViewById(android.R.id.message);
+                        mMessageView.setText("安装中");
+            mProgressDialog  = new AlertDialog.Builder(this, R.style.Theme_App_Dialog)
+                                .setView(view)
+                                .setCancelable(false).create();
+                    }
+                            if (src == null || !src.exists()) {
+            setSubtitle("文件不存在 " + (src == null ? null : src.getAbsolutePath()));
+                    return;
+        }
 
-            @Override
-            protected void onProgressUpdate(String... values) {
-                super.updateProgressDialog(values[0]);
-            }
-
-            @Override
-            protected GmSpaceResultParcel doInBackground(String... uris) {
-                String uri = uris[0];
-                // 无需额外判断 调用会处理当前宿主是否支持的游戏
-                // activity接受32位回调  统一在下面的回调内处理 
-                GmSpaceObject.installCompatiblePackage(activity,uri,null);
-                return resultParcel;
-            }
-            @Override
-            protected void onPostExecute(GmSpaceResultParcel result) {
-                super.onPostExecute(result);
-//                if(result.getCode() == GmSpaceResultParcel.CODE_32BIT_PACKAGE_INSTALLing) {
-//                    setSubtitle("正在使用32位游戏插件进行安装！");
-//                } else if(result.getCode() == GmSpaceResultParcel.CODE_32BIT_PACKAGE_UNINSTALL) {
-//                    setSubtitle("请先安装32位游戏插件！");
-//                    // 下载32位应用安装后重试
-//                } else if (result.isSucceed()) {
-//                    setSubtitle("应用安装成功 " + (result.getData() == null ? "" : result.getData().getString(GmSpaceEvent.KEY_PACKAGE_NAME)));
-//                } else {
-//                    setSubtitle("应用安装失败 " + result.getMessage());
-//                }
-            }
-        }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, src.getAbsolutePath());
+        mProgressDialog.show();
+        GmSpaceObject.installCompatiblePackage(this,src.getAbsolutePath(),null);
 ```
 > 安装回调（在统一回调内处理）
 ```md
@@ -41,6 +22,9 @@
     GmSpaceObject.registerGmSpaceCompatibleEventListener(new OnGmSpaceReceivedEventListener() {
         @Override
         public void onReceivedEvent(int type, Bundle extras) {
+            if(mProgressDialog != null) {
+                mProgressDialog.dismiss();
+            }
             if (GmSpaceEvent.TYPE_PACKAGE_INSTALLED == type) {
                 // 有应用安装 返回安装的应用信息 （KEY_PACKAGE_COMPATIBLE_STATUS 可以获取安装是否成功）
                 AppItemEnhance appItemEnhance = extras.getParcelable(GmSpaceEvent.KEY_PACKAGE_COMPATIBLE_INFO);
@@ -51,34 +35,29 @@
             } else if (GmSpaceEvent.TYPE_PACKAGE_UNINSTALLED == type) {
                 // 有应用卸载 （KEY_PACKAGE_COMPATIBLE_STATUS 可以获取卸载是否成功）
                 final String packageName = extras.getString(GmSpaceEvent.KEY_PACKAGE_NAME);
-            }else if (GmSpaceEvent.TYPE_COMPONENT_SETTING_CHANGE == type){
+            } else if (GmSpaceEvent.TYPE_COMPONENT_SETTING_CHANGE == type){
                 // 组件状态变化 返回应用信息
                 AppItemEnhance appItemEnhance = extras.getParcelable(GmSpaceEvent.KEY_PACKAGE_COMPATIBLE_INFO);
+            } else if(GmSpaceEvent.TYPE_PACKAGE_EXT_NOT_INSTALL == type) {
+                // 调用安装、卸载、启动应用若指定32插件应用未安装 会提示，可以在这里 GmSpaceObject.getInstalledCompatiblePackages() 以刷新删除安装的32位应用列表显示
             }
-        }
     });
 ```
 
 ### 2. 应用卸载
 ```md
-        new DialogAsyncTask<Void, Void, Boolean>(context) {
-            @Override
-            protected void onPreExecute() {
-                super.showProgressDialog("正在卸载");
-            }
-
-            @Override
-            protected Boolean doInBackground(Void... voids) {
-                // activity接受32位回调  统一在上诉回调内处理 通过status判断是否成功
-                GmSpaceObject.uninstallCompatiblePackage(activity,appItemEnhance);
-                return false;
-            }
-
-            @Override
-            protected void onPostExecute(Boolean result) {
-                super.onPostExecute(result);
-            }
-        }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+     public void asyncUninstallApp(Context context, AppItemEnhance appItemEnhance) {
+        if(mProgressDialog == null) {
+            final View view = LayoutInflater.from(requireActivity()).inflate(R.layout.dialog_material_loading, null);
+            TextView mMessageView = view.findViewById(android.R.id.message);
+            mMessageView.setText("卸载中");
+            mProgressDialog  = new AlertDialog.Builder(requireActivity(), R.style.Theme_App_Dialog)
+                    .setView(view)
+                    .setCancelable(false).create();
+        }
+        mProgressDialog.show();
+        GmSpaceObject.uninstallCompatiblePackage(requireActivity(), appItemEnhance);
+    }
 ```
 
 ### 3. 应用启动
@@ -116,7 +95,8 @@
         }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
 ```
 
-### 4. 获取已安装的应用列表 包含32位和64位  按lastUpdateTime排序 
+### 4. 获取已安装的应用列表 包含32位和64位  按lastUpdateTime排序
+
 ```kotlin
     GmSpaceObject.getInstalledCompatiblePackages()
 ```

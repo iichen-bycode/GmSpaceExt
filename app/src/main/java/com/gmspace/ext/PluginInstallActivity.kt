@@ -26,6 +26,6 @@ class PluginInstallActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.layout_activity_install)
 
-        GmSpaceObject.call32BitAppInstallResult(this,executor)
+        GmSpaceObject.call32BitAppInstallResult(this)
     }
 }

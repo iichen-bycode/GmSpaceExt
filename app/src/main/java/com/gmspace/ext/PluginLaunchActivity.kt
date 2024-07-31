@@ -28,6 +28,6 @@ class PluginLaunchActivity : BaseActivity() {
             }
         }
 
-        GmSpaceObject.call32BitAppLaunchApplication(this,executor)
+        GmSpaceObject.call32BitAppLaunchApplication(this)
     }
 }
