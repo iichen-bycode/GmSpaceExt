@@ -264,7 +264,7 @@
 
         <provider
             android:name="androidx.core.content.FileProvider"
-            android:authorities="com.gmspace.sdk.plugin.provider"
+            android:authorities="com.gmspace.sdk.record.provider"
             android:exported="false"
             android:grantUriPermissions="true" >
             <meta-data
@@ -275,6 +275,7 @@
         <service
             android:name="com.gmspace.sdk.recorder.ScreenRecordService"
             android:foregroundServiceType="mediaProjection" />
+        <service android:name="com.gmspace.sdk.utils.GmSpaceVideoFilesService" />
 
         <provider
             android:name="androidx.startup.InitializationProvider"
