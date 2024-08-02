@@ -38,8 +38,11 @@
             } else if (GmSpaceEvent.TYPE_COMPONENT_SETTING_CHANGE == type){
                 // 组件状态变化 返回应用信息
                 AppItemEnhance appItemEnhance = extras.getParcelable(GmSpaceEvent.KEY_PACKAGE_COMPATIBLE_INFO);
+                String message = extras.getParcelable(GmSpaceEvent.KEY_PACKAGE_COMPATIBLE_MESSAGE);
             } else if(GmSpaceEvent.TYPE_PACKAGE_EXT_NOT_INSTALL == type) {
                 // 调用安装、卸载、启动应用若指定32插件应用未安装 会提示，可以在这里 GmSpaceObject.getInstalledCompatiblePackages() 以刷新删除安装的32位应用列表显示
+            } else if(GmSpaceEvent.TYPE_PACKAGE_EXT_APPLICATION_NOT_INSTALL) {
+                // 32位插件里的应用已经卸载 去刷新当前列表移除当前item
             }
     });
 ```
