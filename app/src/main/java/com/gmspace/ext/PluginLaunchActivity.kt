@@ -1,13 +1,8 @@
 package com.gmspace.ext
 
-import android.graphics.BitmapFactory
 import android.os.Bundle
-import android.widget.ImageView
-import android.widget.TextView
 import com.gmspace.sdk.GmSpaceObject
 import com.gmspace.sdk.R
-import com.gmspace.sdk.model.AppItemEnhance
-import com.vlite.sdk.utils.GsonUtils
 
 class PluginLaunchActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

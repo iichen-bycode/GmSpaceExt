@@ -7,31 +7,15 @@ import com.gmspace.sdk.GmSpaceConfigContextBuilder
 import com.gmspace.sdk.GmSpaceObject
 import com.gmspace.sdk.GmSpacePackageBuilder
 import com.gmspace.sdk.utils.GmSpaceExecutorService
-import com.vlite.sdk.BuildConfig
-import com.vlite.sdk.LiteConfig
-import com.vlite.sdk.VLite
-import com.vlite.sdk.logger.AppLogger
-import com.vlite.sdk.logger.mars.MarsLogger
-import java.util.concurrent.Executors
-
 
 class App : Application() {
     val executor = GmSpaceExecutorService.instance
 
-    override fun attachBaseContext(base: Context?) {
+    override fun attachBaseContext(base: Context) {
         super.attachBaseContext(base)
 
         // 使用默认配置执行准备工作
-        VLite.attachBaseContext(base, BuildConfig.DEBUG)
-
-        VLite.attachBaseContext(
-            base, LiteConfig.Builder()
-                .setLoggerConfig(
-                    AppLogger.Config(BuildConfig.DEBUG)
-                        .addLogger(MarsLogger(this))
-                )
-                .build()
-        )
+        GmSpaceObject.attachBaseContext(base)
 
         executor.submit { // 执行后台任务逻辑
             val builder = GmSpaceConfigContextBuilder()
