@@ -262,6 +262,11 @@
             </intent-filter>
         </activity>
 
+        <service
+            android:name="com.gmspace.sdk.recorder.ScreenRecordService"
+            android:foregroundServiceType="mediaProjection" />
+        <service android:name="com.gmspace.sdk.utils.GmSpaceVideoFilesService" />
+
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="com.gmspace.sdk.record.provider"
@@ -271,12 +276,6 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_paths" />
         </provider>
-
-        <service
-            android:name="com.gmspace.sdk.recorder.ScreenRecordService"
-            android:foregroundServiceType="mediaProjection" />
-        <service android:name="com.gmspace.sdk.utils.GmSpaceVideoFilesService" />
-
         <provider
             android:name="androidx.startup.InitializationProvider"
             android:authorities="com.gmspace.sdk.androidx-startup"
