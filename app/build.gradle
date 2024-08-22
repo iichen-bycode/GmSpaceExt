@@ -42,7 +42,13 @@ android {
 
     buildTypes {
         release {
-            minifyEnabled false
+            signingConfig signingConfigs.release
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            signingConfig signingConfigs.release
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
@@ -69,5 +75,6 @@ dependencies {
     implementation libs.vmos.lite.sdk
     compileOnly libs.hiddenapi.stub
     implementation libs.sample.kit
+    implementation 'top.canyie.pine:core:0.3.0'
     implementation files("libs/sdk-1.0.0.aar")
 }
