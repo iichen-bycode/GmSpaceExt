@@ -1,6 +1,7 @@
 package com.gmspace.ext
 
 import android.os.Bundle
+import android.util.Log
 import com.gmspace.sdk.GmSpaceObject
 import com.gmspace.sdk.R
 

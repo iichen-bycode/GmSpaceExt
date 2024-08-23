@@ -35,11 +35,13 @@ class App : Application() {
     }
 
     override fun onCreate() {
-        Log.d("iichen", ">>>>>>>插件Application onCreate!")
+        Log.d("iichen", ">>>>>>>插件Application onCreate! ${this.hashCode()} ${Thread.currentThread().name}")
         super.onCreate()
         GmSpaceObject.initialize(
             this, "fIyzKzyNNBEw1Hnn", "3ppgrZzdkRhunw"
-        ) { b, i, s -> Log.d("iichen", "初始化有没有成功$b") }
+        ) { b, i, s ->
+            Log.d("iichen", "初始化有没有成功$b")
+        }
     }
 
     override fun onTerminate() {

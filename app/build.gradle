@@ -12,7 +12,8 @@ android {
     defaultConfig {
         applicationId "com.gmspace.sdk"
         minSdk 21
-        targetSdk 34
+        //noinspection ExpiredTargetSdkVersion
+        targetSdk 28
         versionCode 1
         versionName "1.0"
 
@@ -43,12 +44,12 @@ android {
     buildTypes {
         release {
             signingConfig signingConfigs.release
-            minifyEnabled true
+            minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
         debug {
             signingConfig signingConfigs.release
-            minifyEnabled true
+            minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
@@ -75,6 +76,6 @@ dependencies {
     implementation libs.vmos.lite.sdk
     compileOnly libs.hiddenapi.stub
     implementation libs.sample.kit
-    implementation 'top.canyie.pine:core:0.3.0'
+    implementation libs.core
     implementation files("libs/sdk-1.0.0.aar")
 }
